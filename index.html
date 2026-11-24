@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prénom Nom – Portfolio</title>
+  <meta name="description" content="Portfolio de Prénom Nom : formations, expériences, distinctions, projets et contact.">
+  <meta property="og:title" content="Prénom Nom – Portfolio">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== COULEURS ET POLICES : modifie ici ===== */
+    :root {
+      --bg: #0a1a3a;                       /* fond bleu marine */
+      --block: rgba(255,255,255,.05);      /* fond des blocs */
+      --line: rgba(255,255,255,.22);       /* bordures */
+      --text: #ffffff;                     /* texte */
+      --muted: rgba(255,255,255,.74);      /* texte secondaire */
+      --serif: "Newsreader", Georgia, "Times New Roman", serif;
+      --sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: var(--sans); font-size: 1.0625rem; line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--text); text-underline-offset: 3px; }
+    a:hover { text-decoration-thickness: 2px; }
+    :focus-visible { outline: 3px solid #fff; outline-offset: 3px; border-radius: 4px; }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.2; margin: 0; }
+    p { margin: 0 0 1rem; }
+    ul { margin: 0; padding: 0; list-style: none; }
+
+    /* ===== Navigation ===== */
+    .topbar {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(10,26,58,.9); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner {
+      max-width: 900px; margin: 0 auto; padding: .8rem 1.25rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    }
+    .brand { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; text-decoration: none; }
+    .nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+    .nav a { color: var(--muted); text-decoration: none; font-size: .95rem; font-weight: 500; }
+    .nav a:hover { color: var(--text); }
+
+    /* ===== Mise en page ===== */
+    .page { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.25rem 3rem; display: grid; gap: 1.5rem; }
+    .block { background: var(--block); border: 1px solid var(--line); border-radius: 14px; padding: 1.75rem 2rem; }
+    .block > h2 { font-size: 1.6rem; margin-bottom: 1.25rem; }
+
+    /* ===== Profil ===== */
+    .profile { text-align: center; padding: 2.5rem 2rem; }
+    .avatar {
+      width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin: 0 auto 1.25rem;
+      display: grid; place-items: center; border: 3px solid #fff;
+      font-family: var(--serif); font-size: 3rem; font-weight: 600; background: rgba(255,255,255,.1);
+    }
+    .profile h1 { font-size: 2.4rem; }
+    .role { color: var(--muted); margin: .4rem 0 .2rem; font-size: 1.1rem; }
+    .place { color: var(--muted); font-size: .95rem; margin-bottom: 1.25rem; }
+    .links { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; }
+    .chip {
+      padding: .4rem .95rem; border: 1px solid var(--line); border-radius: 999px;
+      text-decoration: none; font-size: .95rem; font-weight: 500;
+    }
+    .chip:hover { background: #fff; color: var(--bg); }
+    .btn {
+      display: inline-block; margin-top: 1.5rem; padding: .7rem 1.4rem; border-radius: 8px;
+      background: #fff; color: var(--bg); font-weight: 600; text-decoration: none;
+    }
+    .btn:hover { background: rgba(255,255,255,.85); }
+
+    /* ===== Listes (formations, expériences, distinctions) ===== */
+    .entry { display: flex; justify-content: space-between; gap: 1.5rem; padding: 1rem 0; border-top: 1px solid var(--line); }
+    .entry:first-of-type { border-top: 0; padding-top: 0; }
+    .entry:last-child { padding-bottom: 0; }
+    .entry h3 { font-size: 1.15rem; }
+    .entry .sub { color: var(--muted); margin: .15rem 0 0; font-size: .98rem; }
+    .entry .desc { color: var(--muted); margin: .5rem 0 0; font-size: .98rem; }
+    .years { color: var(--muted); font-size: .95rem; text-align: right; white-space: nowrap; }
+    .entry a.more { display: inline-block; margin-top: .4rem; font-size: .95rem; font-weight: 500; }
+
+    @media (max-width: 600px) {
+      .block { padding: 1.4rem 1.25rem; }
+      .entry { flex-direction: column; gap: .25rem; }
+      .years { text-align: left; }
+      .profile h1 { font-size: 2rem; }
+      .brand { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+    footer { max-width: 900px; margin: 0 auto; padding: 1rem 1.25rem 3rem; color: var(--muted); font-size: .9rem; text-align: center; }
+  </style>
+</head>
+
+<body>
+  <!-- ===== NAVIGATION ===== -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#">Prénom Nom</a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="#formations">Formations</a>
+        <a href="#experiences">Expériences</a>
+        <a href="#distinctions">Distinctions</a>
+        <a href="#projets">Projets</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+
+    <!-- ===== PROFIL ===== -->
+    <section class="block profile">
+      <!-- Pour ta photo : remplace le <div> par
+           <img class="avatar" src="photo.jpg" alt="Portrait de Prénom Nom"> -->
+      <div class="avatar" aria-hidden="true">PN</div>
+      <h1>Prénom Nom</h1>
+      <p class="role">Ton métier ou ton titre</p>
+      <p class="place">Ton école, entreprise ou laboratoire · Ville, Pays</p>
+      <div class="links">
+        <a class="chip" href="mailto:ton.email@exemple.fr">E-mail</a>
+        <a class="chip" href="https://github.com/ton-pseudo" target="_blank" rel="noopener">GitHub</a>
+        <a class="chip" href="https://www.linkedin.com/in/ton-profil" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <!-- Place ton CV (PDF) à côté de ce fichier sous le nom cv.pdf -->
+      <a class="btn" href="cv.pdf" download>Télécharger mon CV</a>
+    </section>
+
+    <!-- ===== FORMATIONS ===== -->
+    <section class="block" id="formations">
+      <h2>Formations</h2>
+      <ul>
+        <li class="entry">
+          <div>
+            <h3>Nom du diplôme le plus récent</h3>
+            <p class="sub">École ou université</p>
+          </div>
+          <div class="years">2023 – 2024</div>
+        </li>
+        <li class="entry">
+          <div>
+            <h3>Nom du diplôme précédent</h3>
+            <p class="sub">École ou université</p>
+          </div>
+          <div class="years">2020 – 2023</div>
+        </li>
+        <li class="entry">
+          <div>
+            <h3>Baccalauréat ou autre diplôme</h3>
+            <p class="sub">Lycée ou établissement</p>
+          </div>
+          <div class="years">2020</div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== EXPÉRIENCES ===== -->
+    <section class="block" id="experiences">
+      <h2>Expériences</h2>
+      <ul>
+        <li class="entry">
+          <div>
+            <h3>Intitulé du poste actuel</h3>
+            <p class="sub">Entreprise ou organisation</p>
+            <p class="desc">Une ou deux phrases sur tes missions et tes résultats.</p>
+          </div>
+          <div class="years">2024 – aujourd’hui</div>
+        </li>
+        <li class="entry">
+          <div>
+            <h3>Intitulé du poste précédent</h3>
+            <p class="sub">Entreprise ou organisation</p>
+            <p class="desc">Une ou deux phrases sur tes missions et tes résultats.</p>
+          </div>
+          <div class="years">2023</div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== DISTINCTIONS ===== -->
+    <section class="block" id="distinctions">
+      <h2>Distinctions</h2>
+      <ul>
+        <li class="entry">
+          <div>
+            <h3>Nom du prix ou de la distinction</h3>
+            <p class="sub">Organisme décernant le prix</p>
+            <p class="desc">Une phrase pour expliquer ce que ce prix récompense.</p>
+          </div>
+          <div class="years">2025</div>
+        </li>
+        <li class="entry">
+          <div>
+            <h3>Autre distinction</h3>
+            <p class="sub">Organisme</p>
+          </div>
+          <div class="years">2024</div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== PROJETS ===== -->
+    <section class="block" id="projets">
+      <h2>Projets</h2>
+      <ul>
+        <li class="entry">
+          <div>
+            <h3>Nom du projet 1</h3>
+            <p class="desc">Quel problème il résout, avec quelles technologies, et quel résultat tu as obtenu.</p>
+            <a class="more" href="https://github.com/ton-pseudo/projet-1" target="_blank" rel="noopener">Voir le code</a>
+          </div>
+          <div class="years">2026</div>
+        </li>
+        <li class="entry">
+          <div>
+            <h3>Nom du projet 2</h3>
+            <p class="desc">Quel problème il résout, avec quelles technologies, et quel résultat tu as obtenu.</p>
+            <a class="more" href="https://github.com/ton-pseudo/projet-2" target="_blank" rel="noopener">Voir le code</a>
+          </div>
+          <div class="years">2025</div>
+        </li>
+        <li class="entry">
+          <div>
+            <h3>Nom du projet 3</h3>
+            <p class="desc">Quel problème il résout, avec quelles technologies, et quel résultat tu as obtenu.</p>
+            <a class="more" href="https://github.com/ton-pseudo/projet-3" target="_blank" rel="noopener">Voir le code</a>
+          </div>
+          <div class="years">2024</div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="block" id="contact">
+      <h2>Contact</h2>
+      <p>Une question ou une proposition de collaboration ? Écris-moi à <a href="mailto:ton.email@exemple.fr">ton.email@exemple.fr</a>.</p>
+      <div class="links" style="justify-content:flex-start">
+        <a class="chip" href="https://github.com/ton-pseudo" target="_blank" rel="noopener">GitHub</a>
+        <a class="chip" href="https://www.linkedin.com/in/ton-profil" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>© <span id="year">2026</span> Prénom Nom</footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
