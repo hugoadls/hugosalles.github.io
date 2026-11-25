@@ -3,98 +3,128 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Prénom Nom – Portfolio</title>
-  <meta name="description" content="Portfolio de Prénom Nom : formations, expériences, distinctions, projets et contact.">
-  <meta property="og:title" content="Prénom Nom – Portfolio">
+  <title>Hugo Salles – Portfolio</title>
+  <meta name="description" content="Portfolio de Hugo Salles : formations, expériences, distinctions, projets et contact.">
+  <meta property="og:title" content="Hugo Salles – Portfolio">
   <meta property="og:type" content="website">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-
   <style>
+    /* ===== POLICE MARIANNE (police de l'État français, via le Système de Design de l'État) ===== */
+    @font-face {
+      font-family: "Marianne";
+      src: url("https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.12.1/dist/fonts/Marianne-Regular.woff2") format("woff2");
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: "Marianne";
+      src: url("https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.12.1/dist/fonts/Marianne-Medium.woff2") format("woff2");
+      font-weight: 500; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: "Marianne";
+      src: url("https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.12.1/dist/fonts/Marianne-Bold.woff2") format("woff2");
+      font-weight: 700; font-style: normal; font-display: swap;
+    }
+
     /* ===== COULEURS ET POLICES : modifie ici ===== */
     :root {
-      --bg: #0a1a3a;                       /* fond bleu marine */
+      --bg: #050d24;                       /* fond bleu marine foncé */
       --block: rgba(255,255,255,.05);      /* fond des blocs */
       --line: rgba(255,255,255,.22);       /* bordures */
+      --line-strong: rgba(255,255,255,.55);/* trait vertical des postes */
       --text: #ffffff;                     /* texte */
       --muted: rgba(255,255,255,.74);      /* texte secondaire */
-      --serif: "Newsreader", Georgia, "Times New Roman", serif;
-      --sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --font: "Marianne", Arial, Helvetica, sans-serif;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
     body {
       margin: 0; background: var(--bg); color: var(--text);
-      font-family: var(--sans); font-size: 1.0625rem; line-height: 1.65;
+      font-family: var(--font); font-size: 1rem; line-height: 1.65;
       -webkit-font-smoothing: antialiased;
     }
     a { color: var(--text); text-underline-offset: 3px; }
     a:hover { text-decoration-thickness: 2px; }
     :focus-visible { outline: 3px solid #fff; outline-offset: 3px; border-radius: 4px; }
-    h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.2; margin: 0; }
+    h1, h2, h3 { font-family: var(--font); font-weight: 700; line-height: 1.25; margin: 0; }
     p { margin: 0 0 1rem; }
     ul { margin: 0; padding: 0; list-style: none; }
 
     /* ===== Navigation ===== */
     .topbar {
       position: sticky; top: 0; z-index: 10;
-      background: rgba(10,26,58,.9); backdrop-filter: blur(8px);
+      background: rgba(5,13,36,.9); backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--line);
     }
     .topbar-inner {
       max-width: 900px; margin: 0 auto; padding: .8rem 1.25rem;
       display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
     }
-    .brand { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; text-decoration: none; }
+    .brand { font-size: 1.1rem; font-weight: 700; text-decoration: none; }
     .nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
-    .nav a { color: var(--muted); text-decoration: none; font-size: .95rem; font-weight: 500; }
+    .nav a { color: var(--muted); text-decoration: none; font-size: .92rem; font-weight: 500; }
     .nav a:hover { color: var(--text); }
 
     /* ===== Mise en page ===== */
     .page { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.25rem 3rem; display: grid; gap: 1.5rem; }
     .block { background: var(--block); border: 1px solid var(--line); border-radius: 14px; padding: 1.75rem 2rem; }
-    .block > h2 { font-size: 1.6rem; margin-bottom: 1.25rem; }
+    .block > h2 { font-size: 1.5rem; margin-bottom: 1.25rem; }
 
-    /* ===== Profil ===== */
-    .profile { text-align: center; padding: 2.5rem 2rem; }
-    .avatar {
-      width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin: 0 auto 1.25rem;
-      display: grid; place-items: center; border: 3px solid #fff;
-      font-family: var(--serif); font-size: 3rem; font-weight: 600; background: rgba(255,255,255,.1);
-    }
-    .profile h1 { font-size: 2.4rem; }
-    .role { color: var(--muted); margin: .4rem 0 .2rem; font-size: 1.1rem; }
-    .place { color: var(--muted); font-size: .95rem; margin-bottom: 1.25rem; }
-    .links { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; }
-    .chip {
-      padding: .4rem .95rem; border: 1px solid var(--line); border-radius: 999px;
-      text-decoration: none; font-size: .95rem; font-weight: 500;
-    }
-    .chip:hover { background: #fff; color: var(--bg); }
+    /* ===== Deux cases du haut ===== */
+    .top { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .id-card { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+    .id-card h1 { font-size: 2.2rem; }
+    .city { color: var(--muted); margin: .4rem 0 0; font-size: 1.05rem; }
     .btn {
-      display: inline-block; margin-top: 1.5rem; padding: .7rem 1.4rem; border-radius: 8px;
-      background: #fff; color: var(--bg); font-weight: 600; text-decoration: none;
+      display: inline-block; margin-top: 1.5rem; padding: .65rem 1.8rem; border-radius: 8px;
+      background: #fff; color: var(--bg); font-weight: 700; text-decoration: none;
     }
     .btn:hover { background: rgba(255,255,255,.85); }
 
-    /* ===== Listes (formations, expériences, distinctions) ===== */
+    .now-card { display: grid; gap: 1.25rem; align-content: center; }
+    .now-label { color: var(--muted); font-size: .9rem; margin: 0 0 .2rem; }
+    .now-card h2 { font-size: 1.15rem; }
+    .now-card .sub { color: var(--muted); margin: .1rem 0 0; font-size: .95rem; }
+    .now-card li + li { border-top: 1px solid var(--line); padding-top: 1.25rem; }
+
+    /* ===== Listes (formations, expériences, distinctions, projets) ===== */
     .entry { display: flex; justify-content: space-between; gap: 1.5rem; padding: 1rem 0; border-top: 1px solid var(--line); }
     .entry:first-of-type { border-top: 0; padding-top: 0; }
     .entry:last-child { padding-bottom: 0; }
-    .entry h3 { font-size: 1.15rem; }
-    .entry .sub { color: var(--muted); margin: .15rem 0 0; font-size: .98rem; }
-    .entry .desc { color: var(--muted); margin: .5rem 0 0; font-size: .98rem; }
-    .years { color: var(--muted); font-size: .95rem; text-align: right; white-space: nowrap; }
-    .entry a.more { display: inline-block; margin-top: .4rem; font-size: .95rem; font-weight: 500; }
+    .entry h3 { font-size: 1.05rem; }
+    .entry .sub { color: var(--muted); margin: .15rem 0 0; font-size: .95rem; }
+    .entry .desc { color: var(--muted); margin: .5rem 0 0; font-size: .95rem; }
+    .years { color: var(--muted); font-size: .92rem; text-align: right; white-space: nowrap; }
+    .entry a.more { display: inline-block; margin-top: .4rem; font-size: .92rem; font-weight: 500; }
 
-    @media (max-width: 600px) {
+    /* Sous-titres à l'intérieur d'un bloc (Expériences actuelles / Stages) */
+    .group-title { font-size: 1.05rem; color: var(--muted); font-weight: 500; margin: 0 0 1rem; padding-bottom: .5rem; border-bottom: 1px solid var(--line-strong); }
+    .group + .group { margin-top: 2rem; }
+
+    /* Plusieurs postes dans la même organisation : trait vertical entre les deux */
+    .roles { margin-top: .75rem; border-left: 2px solid var(--line-strong); padding-left: 1.1rem; }
+    .roles > li { position: relative; }
+    .roles > li + li { margin-top: 1.1rem; }
+    .roles > li::before {
+      content: ""; position: absolute; left: calc(-1.1rem - 6px); top: .5rem;
+      width: 10px; height: 10px; border-radius: 50%; background: #fff;
+    }
+    .roles .desc { margin-top: .3rem; }
+
+    .links { display: flex; flex-wrap: wrap; gap: .6rem; }
+    .chip {
+      padding: .4rem .95rem; border: 1px solid var(--line); border-radius: 999px;
+      text-decoration: none; font-size: .92rem; font-weight: 500;
+    }
+    .chip:hover { background: #fff; color: var(--bg); }
+
+    @media (max-width: 700px) {
+      .top { grid-template-columns: 1fr; }
       .block { padding: 1.4rem 1.25rem; }
       .entry { flex-direction: column; gap: .25rem; }
       .years { text-align: left; }
-      .profile h1 { font-size: 2rem; }
+      .id-card h1 { font-size: 1.9rem; }
       .brand { display: none; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
@@ -107,12 +137,12 @@
   <!-- ===== NAVIGATION ===== -->
   <header class="topbar">
     <div class="topbar-inner">
-      <a class="brand" href="#">Prénom Nom</a>
+      <a class="brand" href="#">Hugo Salles</a>
       <nav class="nav" aria-label="Navigation principale">
         <a href="#formations">Formations</a>
         <a href="#experiences">Expériences</a>
         <a href="#distinctions">Distinctions</a>
-        <a href="#projets">Projets</a>
+        <a href="#projets">Projet</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -120,22 +150,32 @@
 
   <main class="page">
 
-    <!-- ===== PROFIL ===== -->
-    <section class="block profile">
-      <!-- Pour ta photo : remplace le <div> par
-           <img class="avatar" src="photo.jpg" alt="Portrait de Prénom Nom"> -->
-      <div class="avatar" aria-hidden="true">PN</div>
-      <h1>Prénom Nom</h1>
-      <p class="role">Ton métier ou ton titre</p>
-      <p class="place">Ton école, entreprise ou laboratoire · Ville, Pays</p>
-      <div class="links">
-        <a class="chip" href="mailto:ton.email@exemple.fr">E-mail</a>
-        <a class="chip" href="https://github.com/ton-pseudo" target="_blank" rel="noopener">GitHub</a>
-        <a class="chip" href="https://www.linkedin.com/in/ton-profil" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-      <!-- Place ton CV (PDF) à côté de ce fichier sous le nom cv.pdf -->
-      <a class="btn" href="cv.pdf" download>Télécharger mon CV</a>
-    </section>
+    <!-- ===== DEUX CASES DU HAUT ===== -->
+    <div class="top">
+      <!-- Case de gauche : identité -->
+      <section class="block id-card">
+        <h1>Hugo Salles</h1>
+        <p class="city">Paris, 75005</p>
+        <!-- Le CV (cv.pdf) doit rester à côté de ce fichier -->
+        <a class="btn" href="cv.pdf" download>CV</a>
+      </section>
+
+      <!-- Case de droite : situation actuelle -->
+      <section class="block now-card">
+        <ul>
+          <li>
+            <p class="now-label">Formation actuelle</p>
+            <h2>Licence mention Économie</h2>
+            <p class="sub">Université Paris I Panthéon-Sorbonne</p>
+          </li>
+          <li>
+            <p class="now-label">Emploi actuel</p>
+            <h2>Membre de la direction</h2>
+            <p class="sub">ANAPOL Media</p>
+          </li>
+        </ul>
+      </section>
+    </div>
 
     <!-- ===== FORMATIONS ===== -->
     <section class="block" id="formations">
@@ -143,24 +183,21 @@
       <ul>
         <li class="entry">
           <div>
-            <h3>Nom du diplôme le plus récent</h3>
-            <p class="sub">École ou université</p>
+            <h3>3ème année de Licence mention Économie</h3>
+            <p class="sub">Université Paris I Panthéon-Sorbonne</p>
+            <p class="sub">École d’économie de la Sorbonne</p>
+            <p class="desc">Formation complémentaire : Oser entreprendre, Projet entreprenariat de Sorb’Rising</p>
           </div>
-          <div class="years">2023 – 2024</div>
+          <div class="years">2026 – 2027</div>
         </li>
         <li class="entry">
           <div>
-            <h3>Nom du diplôme précédent</h3>
-            <p class="sub">École ou université</p>
+            <h3>1ère et 2ème année de Licence mention Économie</h3>
+            <p class="sub">Université de Rouen Normandie</p>
+            <p class="sub">UFR Droit, Économie et Science Politique</p>
+            <p class="desc">Major de promotion</p>
           </div>
-          <div class="years">2020 – 2023</div>
-        </li>
-        <li class="entry">
-          <div>
-            <h3>Baccalauréat ou autre diplôme</h3>
-            <p class="sub">Lycée ou établissement</p>
-          </div>
-          <div class="years">2020</div>
+          <div class="years">2024 – 2026</div>
         </li>
       </ul>
     </section>
@@ -168,24 +205,73 @@
     <!-- ===== EXPÉRIENCES ===== -->
     <section class="block" id="experiences">
       <h2>Expériences</h2>
-      <ul>
-        <li class="entry">
-          <div>
-            <h3>Intitulé du poste actuel</h3>
-            <p class="sub">Entreprise ou organisation</p>
-            <p class="desc">Une ou deux phrases sur tes missions et tes résultats.</p>
-          </div>
-          <div class="years">2024 – aujourd’hui</div>
-        </li>
-        <li class="entry">
-          <div>
-            <h3>Intitulé du poste précédent</h3>
-            <p class="sub">Entreprise ou organisation</p>
-            <p class="desc">Une ou deux phrases sur tes missions et tes résultats.</p>
-          </div>
-          <div class="years">2023</div>
-        </li>
-      </ul>
+
+      <!-- Expériences actuelles -->
+      <div class="group">
+        <h3 class="group-title">Expériences actuelles</h3>
+        <ul>
+          <!-- Anapol Media : deux postes dans le même bloc, reliés par un trait vertical -->
+          <li class="entry">
+            <div>
+              <h3>ANAPOL Media</h3>
+              <p class="sub">Bénévolat</p>
+              <ul class="roles">
+                <li>
+                  <h3>Membre de la direction</h3>
+                  <p class="desc">Encadrement des équipes, participation au conseil et aux votes sur les orientations de l’association, gestion de la trésorerie.</p>
+                </li>
+                <li>
+                  <h3>Rédacteur</h3>
+                  <p class="desc">Rédaction de contenus écrits et visuels, production de formats écrits et vidéo sur l’actualité politique, institutionnelle, géopolitique, économique et financière, à l’échelle nationale et internationale.</p>
+                </li>
+              </ul>
+            </div>
+            <div class="years">Août 2025 – aujourd’hui</div>
+          </li>
+
+          <li class="entry">
+            <div>
+              <h3>Choupidou</h3>
+              <p class="sub">Bénévolat</p>
+              <ul class="roles">
+                <li>
+                  <h3>Chargé des partenariats avec les entreprises</h3>
+                  <p class="desc">Mise en relation avec les entreprises et développement de partenariats durables avec le secteur privé, pour soutenir les actions et les campagnes de dons de l’association, qui favorise le maintien du lien entre les parents et leurs enfants hospitalisés.</p>
+                </li>
+                <li>
+                  <h3>Gestionnaire de base de données</h3>
+                  <p class="desc">Gestion de la base de données partenaires, mise en relation entre les besoins de l’association et les offres des entreprises ou institutions les plus pertinentes, et suivi administratif et contractuel des partenariats.</p>
+                </li>
+              </ul>
+            </div>
+            <div class="years">Janvier 2026 – aujourd’hui</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Stages -->
+      <div class="group">
+        <h3 class="group-title">Stages</h3>
+        <ul>
+          <li class="entry">
+            <div>
+              <h3>Stagiaire en conseil stratégique et modélisation financière</h3>
+              <p class="sub">CERFRANCE, Fleury-sur-Orne (14)</p>
+              <p class="desc">Développement d’un outil d’aide à la décision stratégique pour la Direction Administrative et Financière, avec modélisation de scénarios financiers.</p>
+              <p class="desc" style="margin-top:.35rem">Élaboration de business plans pour la refonte du modèle économique 2025-2035, analyse des leviers de rentabilité (Excel et R) et présentation des conclusions devant le Conseil d’Administration.</p>
+            </div>
+            <div class="years">Juin 2026</div>
+          </li>
+          <li class="entry">
+            <div>
+              <h3>Stagiaire chargé d’accompagnement pédagogique en mathématiques</h3>
+              <p class="sub">Éducation nationale, La Saussaye (27)</p>
+              <p class="desc">Soutien des élèves du collège André Maurois en mathématiques, en collaboration avec les enseignants, pour favoriser la compréhension des notions et la préparation au diplôme national du brevet.</p>
+            </div>
+            <div class="years">Juin 2025</div>
+          </li>
+        </ul>
+      </div>
     </section>
 
     <!-- ===== DISTINCTIONS ===== -->
@@ -194,49 +280,33 @@
       <ul>
         <li class="entry">
           <div>
-            <h3>Nom du prix ou de la distinction</h3>
-            <p class="sub">Organisme décernant le prix</p>
-            <p class="desc">Une phrase pour expliquer ce que ce prix récompense.</p>
+            <h3>Finaliste du concours d’éloquence Oratio (29e édition)</h3>
+            <p class="sub">Université de Rouen Normandie</p>
           </div>
           <div class="years">2025</div>
         </li>
         <li class="entry">
           <div>
-            <h3>Autre distinction</h3>
-            <p class="sub">Organisme</p>
+            <h3>Lauréat du tournoi d’éloquence « Les Ténors du Barreau »</h3>
+            <p class="sub">Festival littéraire Les Géos du Noir</p>
           </div>
-          <div class="years">2024</div>
+          <div class="years">2025</div>
         </li>
       </ul>
     </section>
 
     <!-- ===== PROJETS ===== -->
     <section class="block" id="projets">
-      <h2>Projets</h2>
+      <h2>Projet</h2>
       <ul>
         <li class="entry">
           <div>
-            <h3>Nom du projet 1</h3>
-            <p class="desc">Quel problème il résout, avec quelles technologies, et quel résultat tu as obtenu.</p>
-            <a class="more" href="https://github.com/ton-pseudo/projet-1" target="_blank" rel="noopener">Voir le code</a>
+            <h3>Analyse comparative de 5 ETF avec VBA</h3>
+            <p class="sub">Excel / VBA · Finance de marché</p>
+            <p class="desc">Programme Excel (VBA) qui compare automatiquement cinq ETF (CAC 40, S&amp;P 500, MSCI World, MSCI Asie Émergente, Euro Stoxx 50) entre 2019 et 2026 : performance, niveau de risque et corrélation. Un tableau récapitulatif permet de voir quel ETF offre le meilleur compromis entre rendement et risque.</p>
+            <a class="more" href="VBA-ProjetFinance.xlsm" download>Télécharger le fichier Excel</a>
           </div>
           <div class="years">2026</div>
-        </li>
-        <li class="entry">
-          <div>
-            <h3>Nom du projet 2</h3>
-            <p class="desc">Quel problème il résout, avec quelles technologies, et quel résultat tu as obtenu.</p>
-            <a class="more" href="https://github.com/ton-pseudo/projet-2" target="_blank" rel="noopener">Voir le code</a>
-          </div>
-          <div class="years">2025</div>
-        </li>
-        <li class="entry">
-          <div>
-            <h3>Nom du projet 3</h3>
-            <p class="desc">Quel problème il résout, avec quelles technologies, et quel résultat tu as obtenu.</p>
-            <a class="more" href="https://github.com/ton-pseudo/projet-3" target="_blank" rel="noopener">Voir le code</a>
-          </div>
-          <div class="years">2024</div>
         </li>
       </ul>
     </section>
@@ -244,16 +314,15 @@
     <!-- ===== CONTACT ===== -->
     <section class="block" id="contact">
       <h2>Contact</h2>
-      <p>Une question ou une proposition de collaboration ? Écris-moi à <a href="mailto:ton.email@exemple.fr">ton.email@exemple.fr</a>.</p>
-      <div class="links" style="justify-content:flex-start">
-        <a class="chip" href="https://github.com/ton-pseudo" target="_blank" rel="noopener">GitHub</a>
-        <a class="chip" href="https://www.linkedin.com/in/ton-profil" target="_blank" rel="noopener">LinkedIn</a>
+      <p>Mail : <a href="mailto:hugosalles.adl@gmail.com">hugosalles.adl@gmail.com</a></p>
+      <div class="links">
+        <a class="chip" href="https://www.linkedin.com/in/hugo-salles-01a5b730b/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </section>
 
   </main>
 
-  <footer>© <span id="year">2026</span> Prénom Nom</footer>
+  <footer>© <span id="year">2026</span> Hugo Salles</footer>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
